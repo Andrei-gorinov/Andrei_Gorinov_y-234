@@ -1,9 +1,9 @@
-print("введите расстояние между рядами")
-a=int(input())
-print("введите расстояние между дырочками")
-b=int(input())
-print("введите длина конца шнурка")
-l=int(input())
-print("введите количество дырочек")
-N=int(input())
-print(2*N+(2*l-1)*a+2*(l-1)*b)
+def S(a, b, l, N):
+    leng = 2 * (N - 1) * a + 2 * N * b + l
+    return leng
+a = int(input())
+b = int(input())
+l = int(input())
+N = int(input())
+r = S(a, b, l, N)
+print(r)
