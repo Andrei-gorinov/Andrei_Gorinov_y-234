@@ -1,0 +1,7 @@
+print("Введите числи а ")
+a=int(input())
+print("Введите число b ")
+b=int(input())
+print("Введите число c ")
+c=int(input())
+print("Сумма", a+b+c)
