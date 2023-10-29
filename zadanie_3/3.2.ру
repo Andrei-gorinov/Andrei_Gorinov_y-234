@@ -1,0 +1,5 @@
+print("введите 1 катет-")
+a=int(input())
+print("введите 2 катет-")
+b=int(input())
+print("Площадь", 1/2*a*b)
