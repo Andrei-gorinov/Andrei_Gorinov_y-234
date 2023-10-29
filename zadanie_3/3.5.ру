@@ -1,0 +1,13 @@
+print("введите первое число")
+a=int(input())
+print("введите второе ")
+b=int(input())
+print("введите третье")
+c=int(input())
+if a<b and a<c:
+    d=a
+elif b<c and b<a:
+    d=b
+else:
+    d=c
+print("Наименьшее", d)
