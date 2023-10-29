@@ -1,0 +1,12 @@
+print("введите первое число")
+a=int(input())
+print("введите второе ")
+b=int(input())
+print("введите третье")
+c=int(input())
+if n*m>k and k%n==0:
+    print("да")
+elif n*m>k and k%m==0:
+    print("да")
+else:
+    print("нет")
