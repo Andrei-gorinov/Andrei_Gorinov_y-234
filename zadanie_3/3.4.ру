@@ -1,9 +1,5 @@
-def S(a, b, l, N):
+def S(a, b, l, n)
     leng = 2 * (N - 1) * a + 2 * N * b + l
     return leng
-a = int(input())
-b = int(input())
-l = int(input())
-N = int(input())
-r = S(a, b, l, N)
-print(r)
+
+S(int(input()), int(input()), int(input()), int(input())) 
