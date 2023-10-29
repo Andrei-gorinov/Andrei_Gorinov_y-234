@@ -1,12 +1,11 @@
-print("введите первое число")
-a=int(input())
-print("введите второе ")
-b=int(input())
-print("введите третье")
-c=int(input())
-if n*m>k and k%n==0:
-    print("да")
-elif n*m>k and k%m==0:
-    print("да")
-else:
-    print("нет")
+def F(n, m, k):
+    if (m*n) / 2 == k:
+        print('Да')
+    else:
+        print('Нет')
+
+n = int(input())
+m = int(input())
+k = int(input())
+
+F(n, m, k)
