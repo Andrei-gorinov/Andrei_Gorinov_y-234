@@ -1,0 +1,14 @@
+print("введите строку 1")
+a=int(input())
+print("введите столбец 1")
+b=int(input())
+print("введите строку 2")
+c=int(input())
+print("введите столбец 2")
+d=int(input())
+e=(a+b)%2
+f=(c+d)%2
+if e+f==0:
+    print("да")
+else:
+    print("нет")
