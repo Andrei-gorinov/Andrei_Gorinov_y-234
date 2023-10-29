@@ -1,0 +1,12 @@
+print("введите первое число")
+a=int(input())
+print("введите второе ")
+b=int(input())
+print("введите третье")
+c=int(input())
+if a==b and b==c:
+    print(3)
+elif a==b or b==c or a==c:
+    print(2)
+else:
+    print(0)
