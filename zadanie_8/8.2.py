@@ -1,9 +1,9 @@
-def check_point_in_circle(x, y, a, b, R):
-  distance = math.sqrt((x - a)**2 + (y - b)**2)
- if distance <= R:
-  return True
- else:
-  return False
+  def check_point_in_circle(x, y, a, b, R):
+    distance = math.sqrt((x - a)**2 + (y - b)**2)
+   if distance <= R:
+    return True
+   else:
+    return False
 
    a = 0
    b = 0
