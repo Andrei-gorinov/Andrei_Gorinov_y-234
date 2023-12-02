@@ -1,53 +1,24 @@
-def gcd(a, b):
-    while b != 0:
-        a, b = b, a % b
-    return a
+def calculate_sum_and_count_of_positive_elements(matrix):
+    N = len(matrix)  # Получаем размерность матрицы
+    sum_of_positive_elements = 0
+    count_of_positive_elements = 0
 
-def divide_fractions(a, b, c, d):
-    numerator = a * d
-    denominator = b * c
-    gcd_val = gcd(numerator, denominator)
+    for i in range(N):
+        for j in range(i + 1, N):
+            if matrix[i][j] > 0:
+                sum_of_positive_elements += matrix[i][j]
+                count_of_positive_elements += 1
 
-    numerator //= gcd_val
-    denominator //= gcd_val
+    return sum_of_positive_elements, count_of_positive_elements
 
-    return numerator, denominator
+# Пример использования функции:
+N = 9
+A = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]  # Замените эту матрицу на нужную
+sum_result, count_result = calculate_sum_and_count_of_positive_elements(A)
 
-def read_matrix(filename):
-    matrix = []
-
-    try:
-        with open(filename, 'r') as file:
-            for line in file:
-                row = [int(num) for num in line.strip().split()]
-                matrix.append(row)
-
-        return matrix
-
-    except FileNotFoundError:
-        print("Файл не найден")
-        return None
-
-def write_matrix(matrix, filename):
-    try:
-        with open(filename, 'w') as file:
-            for row in matrix:
-                file.write(' '.join(str(num) for num in row))
-                file.write('\n')
-
-        print("Результаты успешно записаны в файл")
-
-    except:
-        print("Ошибка при записи в файл")
-
-# Чтение матрицы из файла
-input_filename = "ФИО_группа_vvod.txt"
-matrix = read_matrix(input_filename)
-
-if matrix is not None:
-    # Операции с матрицей (пример)
-    result = divide_fractions(matrix[0][0], matrix[0][1], matrix[1][0], matrix[1][1])
-
-    # Запись результата в файл
-    output_filename = "ФИО_группа_vivod.txt"
-    write_matrix([list(result)], output_filename)
+print("Сумма положительных элементов над главной диагональю:", sum_result)
+print("Число положительных элементов над главной диагональю:", count_result)
