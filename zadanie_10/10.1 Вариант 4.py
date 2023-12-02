@@ -6,8 +6,8 @@ def read_matrix_from_file(file_name):
 
 def write_results_to_file(file_name, sum_result, count_result):
     with open(file_name, 'w') as file:
-        file.write(f"Сумма положительных элементов над главной диагональю: {sum_result}\n")
-        file.write(f"Число положительных элементов над главной диагональю: {count_result}\n")
+        file.write(f"Матрица после замены элементов: {sum_result}\n")
+        file.write(f"Нижняя треугольная матрица: {count_result}\n")
 
 input_file_name = 'ФИО_группа_vvod.txt'
 output_file_name = 'ФИО_группа_vivod.txt'
