@@ -1,24 +1,20 @@
-def calculate_sum_and_count_of_positive_elements(matrix):
-    N = len(matrix)  # Получаем размерность матрицы
-    sum_of_positive_elements = 0
-    count_of_positive_elements = 0
-
-    for i in range(N):
-        for j in range(i + 1, N):
-            if matrix[i][j] > 0:
-                sum_of_positive_elements += matrix[i][j]
-                count_of_positive_elements += 1
-
-    return sum_of_positive_elements, count_of_positive_elements
-
-# Пример использования функции:
-N = 9
-A = [
+def F(matrix, k):
+    count = 0
+    max_el = None
+    for row in matrix:
+        for el in row:
+            if el % k == 0:
+                count += 1
+                if max_el is None or el > max_el:
+                    max_el = el
+    return count, max_el
+matrix = [
     [1, 2, 3],
     [4, 5, 6],
     [7, 8, 9]
-]  # Замените эту матрицу на нужную
-sum_result, count_result = calculate_sum_and_count_of_positive_elements(A)
+]
+k = 2
 
-print("Сумма положительных элементов над главной диагональю:", sum_result)
-print("Число положительных элементов над главной диагональю:", count_result)
+count, max_el = F(matrix, k)
+
+print(count, max_el)
