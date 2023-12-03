@@ -11,3 +11,7 @@ def find_second_largest():
         elif number > second_largest:
             second_largest = number
     return second_largest
+
+# Пример использования
+result = find_second_largest()
+print("Второе по величине число в последовательности: ", result)
