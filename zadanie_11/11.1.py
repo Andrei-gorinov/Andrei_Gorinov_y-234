@@ -44,3 +44,4 @@ def get_repo_info():
     button.pack()
 
     window.mainloop()
+pip install requests
