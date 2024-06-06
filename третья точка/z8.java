@@ -12,6 +12,11 @@ public class CaesarCipherDecoder {
 
         Map<Character, Integer> letterFrequencies = calculateLetterFrequencies(encryptedText);
 
+        if (letterFrequencies.isEmpty()) {
+            System.out.println("Текст не содержит букв.");
+            return;
+        }
+
         char mostCommonLetter = findMostCommonLetter(letterFrequencies);
 
         int shift = mostCommonLetter - 'e';
@@ -31,17 +36,17 @@ public class CaesarCipherDecoder {
                 text.append(line);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Ошибка при чтении данных с URL: " + e.getMessage());
         }
         return text.toString();
     }
 
     private static Map<Character, Integer> calculateLetterFrequencies(String text) {
         Map<Character, Integer> frequencies = new HashMap<>();
-        for (char letter : text.toCharArray()) {
+        for (int i = 0; i < text.length(); i++) {
+            char letter = Character.toLowerCase(text.charAt(i));
             if (Character.isLetter(letter)) {
-                char lowercaseLetter = Character.toLowerCase(letter);
-                frequencies.put(lowercaseLetter, frequencies.getOrDefault(lowercaseLetter, 0) + 1);
+                frequencies.put(letter, frequencies.getOrDefault(letter, 0) + 1);
             }
         }
         return frequencies;
@@ -61,7 +66,8 @@ public class CaesarCipherDecoder {
 
     private static String decryptCaesarCipher(String text, int shift) {
         StringBuilder decryptedText = new StringBuilder();
-        for (char letter : text.toCharArray()) {
+        for (int i = 0; i < text.length(); i++) {
+            char letter = text.charAt(i);
             if (Character.isLetter(letter)) {
                 char decryptedLetter = (char) (letter - shift);
                 if ((Character.isLowerCase(letter) && decryptedLetter < 'a') ||
