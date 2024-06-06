@@ -4,19 +4,19 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Введите три числа: начало ряда, шаг и количество шагов:");
-        int start = scanner.nextInt(); 
-        int step = scanner.nextInt();  
-        int numberOfSteps = scanner.nextInt(); 
+        System.out.println("Введите три числа: начальное значение, шаг и количество шагов:");
+        int startValue = scanner.nextInt(); 
+        int stepValue = scanner.nextInt();  
+        int totalSteps = scanner.nextInt(); 
 
-        printSeries(start, step, numberOfSteps);
+        generateSeries(startValue, stepValue, totalSteps);
     }
 
-    public static void printSeries(int start, int step, int numberOfSteps) {
-        int currentValue = start;
-        for (int i = 0; i < numberOfSteps; i++) {
+    public static void generateSeries(int startValue, int stepValue, int totalSteps) {
+        int currentValue = startValue;
+        for (int i = 0; i < totalSteps; i++) {
             System.out.print(currentValue + " ");
-            currentValue += step;
+            currentValue += stepValue;
         }
     }
 }
