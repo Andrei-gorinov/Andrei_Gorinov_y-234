@@ -14,26 +14,27 @@ public class ChooseBestSum {
 
     public static int chooseBestSum(int maxDistance, int numCities, int[] distances) {
         Arrays.sort(distances);
+        int bestSum = -1;
 
-        int[][] combinations = new int[numCities][];
-        for (int i = 0; i < numCities; i++) {
-            combinations[i] = new int[i + 1];
-            for (int j = 0; j <= i; j++) {
-                combinations[i][j] = distances[j];
-            }
-        }
-
-        int bestSum = 0;
-        for (int[] combination : combinations) {
-            int sum = 0;
-            for (int distance : combination) {
-                sum += distance;
-            }
-            if (sum <= maxDistance && sum > bestSum) {
-                bestSum = sum;
+        for (int i = 0; i <= distances.length - numCities; i++) {
+            int sum = distances[i];
+            if (sum <= maxDistance) {
+                int[] selectedDistances = Arrays.copyOfRange(distances, i + 1, i + numCities);
+                int combinationSum = sum + getSum(selectedDistances);
+                if (combinationSum <= maxDistance && combinationSum > bestSum) {
+                    bestSum = combinationSum;
+                }
             }
         }
 
         return bestSum;
+    }
+
+    private static int getSum(int[] distances) {
+        int sum = 0;
+        for (int distance : distances) {
+            sum += distance;
+        }
+        return sum;
     }
 }
