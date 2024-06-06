@@ -17,29 +17,24 @@ public class SortWeightsInGym {
         numbers.add(180);
         numbers.add(90);
 
-        Collections.sort(numbers, new Comparator<Integer>() {
-            public int compare(Integer num1, Integer num2) {
-                int sum1 = getDigitSum(num1);
-                int sum2 = getDigitSum(num2);
+        // Проверка на null и сортировка списка
+        if (numbers != null) {
+            Collections.sort(numbers, Comparator.comparingInt(SortWeightsInGym::getDigitSum).thenComparingInt(num -> num));
+        }
 
-                if (sum1 == sum2) {
-                    return num1 - num2;
-                }
-                return sum1 - sum2;
-            }
-
-            private int getDigitSum(int n) {
-                int sum = 0;
-                while (n > 0) {
-                    sum += n % 10;
-                    n /= 10;
-                }
-                return sum;
-            }
-        });
-
+        // Вывод отсортированного списка
         for (Integer num : numbers) {
             System.out.print(num + " ");
         }
+    }
+
+    // Метод для вычисления суммы цифр числа
+    private static int getDigitSum(int n) {
+        int sum = 0;
+        while (n > 0) {
+            sum += n % 10;
+            n /= 10;
+        }
+        return sum;
     }
 }
