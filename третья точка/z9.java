@@ -2,7 +2,9 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-public class UgadaykaIgra {
+public class GuessingGame {
+
+    private static final int MAX_ATTEMPTS = 20;
 
     public static void main(String[] args) {
         int[] secretCode = generateSecretCode();
@@ -11,12 +13,20 @@ public class UgadaykaIgra {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Добро пожаловать в игру! Попробуйте угадать секретный код менее чем за 20 попыток.");
+        System.out.println("Добро пожаловать в игру! Попробуйте угадать секретный код менее чем за " + MAX_ATTEMPTS + " попыток.");
 
-        while (attempts < 20) {
+        while (attempts < MAX_ATTEMPTS) {
             System.out.println("Введите свои догадки (4 числа):");
             for (int i = 0; i < 4; i++) {
-                guess[i] = scanner.nextInt();
+                while (true) {
+                    if (scanner.hasNextInt()) {
+                        guess[i] = scanner.nextInt();
+                        break;
+                    } else {
+                        System.out.println("Неверный формат ввода. Пожалуйста, введите целое число.");
+                        scanner.next();
+                    }
+                }
             }
 
             int correctDigits = checkGuess(secretCode, guess);
@@ -31,7 +41,7 @@ public class UgadaykaIgra {
             attempts++;
         }
 
-        if (attempts >= 20) {
+        if (attempts >= MAX_ATTEMPTS) {
             System.out.println("У вас закончились попытки. Секретный код был: " + Arrays.toString(secretCode));
         }
 
