@@ -8,8 +8,9 @@ public class Main {
         System.out.println("Введите строку для шифрования:");
         String input = scanner.nextLine();
 
-        System.out.println("Введите величину сдвига (положительный для правого, отрицательный для левого).:");
+        System.out.println("Введите величину сдвига (положительный для правого, отрицательный для левого):");
         int shift = scanner.nextInt();
+        scanner.nextLine(); // consume the newline character
 
         System.out.println("Введите задание (зашифровать или расшифровать):");
         String direction = scanner.nextLine();
@@ -24,8 +25,7 @@ public class Main {
             return;
         }
 
-
-        System.out.println("Зашифрованная/расшифрованная строка:");
+        System.out.println("Результат:");
         System.out.println(output);
     }
 
@@ -33,17 +33,9 @@ public class Main {
         StringBuilder encrypted = new StringBuilder();
         for (char ch : input.toCharArray()) {
             if (Character.isAlphabetic(ch)) {
-                int shiftedCodePoint = ch + shift;
-
-                if (Character.isUpperCase(ch)) {
-                    shiftedCodePoint = shiftedCodePoint % 91 + 65;
-                } else {
-                    shiftedCodePoint = shiftedCodePoint % 123 + 97;
-                }
-
-                char shiftedChar = (char) shiftedCodePoint;
-
-                encrypted.append(shiftedChar);
+                char base = Character.isUpperCase(ch) ? 'A' : 'a';
+                int shiftedChar = (ch - base + shift) % 26 + base;
+                encrypted.append((char) shiftedChar);
             } else {
                 encrypted.append(ch);
             }
