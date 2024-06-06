@@ -15,17 +15,12 @@ public class Main {
         // Разбиваем строку на массив слов
         String[] words = input.split("\\s+");
 
+        // Используем LinkedHashSet для сохранения порядка и удаления дубликатов
         Set<String> uniqueWords = new LinkedHashSet<>(Arrays.asList(words));
 
-        StringBuilder result = new StringBuilder();
-        for (String word : uniqueWords) {
-            result.append(word).append(" ");
-        }
+        // Собираем уникальные слова обратно в строку
+        String result = String.join(" ", uniqueWords);
 
-        if (result.length() > 0) {
-            result.deleteCharAt(result.length() - 1);
-        }
-
-        return result.toString();
+        return result;
     }
 }
