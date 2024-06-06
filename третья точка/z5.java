@@ -1,6 +1,3 @@
-import java.util.HashMap;
-import java.util.Map;
-
 public class Fibonacci {
 
     public static void main(String[] args) {
@@ -23,23 +20,23 @@ public class Fibonacci {
     }
 
     public static int maxDigitFrequency(long number) {
-        Map<Character, Integer> frequencyMap = new HashMap<>();
+        int[] frequencyArray = new int[10];
         char[] digits = String.valueOf(number).toCharArray();
 
         for (char digit : digits) {
-            frequencyMap.put(digit, frequencyMap.getOrDefault(digit, 0) + 1);
+            frequencyArray[digit - '0']++;
         }
 
         int maxFrequency = 0;
-        char maxDigit = '0';
+        int maxDigit = 0;
 
-        for (Map.Entry<Character, Integer> entry : frequencyMap.entrySet()) {
-            if (entry.getValue() > maxFrequency || (entry.getValue() == maxFrequency && entry.getKey() > maxDigit)) {
-                maxFrequency = entry.getValue();
-                maxDigit = entry.getKey();
+        for (int i = 0; i < 10; i++) {
+            if (frequencyArray[i] > maxFrequency || (frequencyArray[i] == maxFrequency && i > maxDigit)) {
+                maxFrequency = frequencyArray[i];
+                maxDigit = i;
             }
         }
 
-        return maxDigit - '0';
+        return maxDigit;
     }
 }
