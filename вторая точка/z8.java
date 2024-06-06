@@ -7,14 +7,15 @@ public class Main {
         System.out.println("Введите строку символов:");
         String input = scanner.nextLine();
 
-        String result = transformString(input);
-        System.out.println("Результат: " + result);
+        String transformedString = transformString(input);
+        System.out.println("Результат: " + transformedString);
     }
 
     public static String transformString(String input) {
         int uppercaseCount = 0;
         int lowercaseCount = 0;
 
+        // Подсчитываем количество заглавных и строчных букв
         for (char c : input.toCharArray()) {
             if (Character.isUpperCase(c)) {
                 uppercaseCount++;
@@ -23,11 +24,10 @@ public class Main {
             }
         }
 
+        // Преобразуем строку в зависимости от количества заглавных и строчных букв
         if (uppercaseCount > lowercaseCount) {
             return input.toUpperCase();
-        } else if (lowercaseCount > uppercaseCount) {
-            return input.toLowerCase();
-        } else { 
+        } else {
             return input.toLowerCase();
         }
     }
