@@ -5,22 +5,22 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Введите первую строку:");
-        String firstString = scanner.nextLine();
+        String str1 = scanner.nextLine();
 
         System.out.println("Введите вторую строку:");
-        String secondString = scanner.nextLine();
+        String str2 = scanner.nextLine();
 
-        boolean result = isEnding(firstString, secondString);
-        System.out.println("Результат: " + result);
+        boolean result = hasEnding(str1, str2);
+        System.out.println("Совпадение окончания: " + result);
     }
 
-    public static boolean isEnding(String firstString, String secondString) {
-        if (firstString.length() < secondString.length()) {
+    public static boolean hasEnding(String str1, String str2) {
+        if (str1.length() < str2.length()) {
             return false; 
         }
 
-        String ending = firstString.substring(firstString.length() - secondString.length());
+        String ending = str1.substring(str1.length() - str2.length());
 
-        return ending.equals(secondString);
+        return ending.equals(str2);
     }
 }
