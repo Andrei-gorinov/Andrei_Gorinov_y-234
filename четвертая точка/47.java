@@ -13,26 +13,30 @@ public class Main {
         int rightColumn = array[0].length - 1;
         
         while (topRow <= bottomRow && leftColumn <= rightColumn) {
+            // Traverse from left to right along the top row
             for (int i = leftColumn; i <= rightColumn; i++) {
                 result[index++] = array[topRow][i]; 
             }
             topRow++;
             
+            // Traverse from top to bottom along the right column
             for (int i = topRow; i <= bottomRow; i++) {
                 result[index++] = array[i][rightColumn]; 
             }
             rightColumn--;
             
+            // Traverse from right to left along the bottom row (if exists)
             if (topRow <= bottomRow) {
                 for (int i = rightColumn; i >= leftColumn; i--) {
-                    result[index++] = array[bottomRow][i]; // Нижняя строка
+                    result[index++] = array[bottomRow][i]; // Bottom row
                 }
                 bottomRow--;
             }
             
+            // Traverse from bottom to top along the left column (if exists)
             if (leftColumn <= rightColumn) {
                 for (int i = bottomRow; i >= topRow; i--) {
-                    result[index++] = array[i][leftColumn]; // Левый столбец
+                    result[index++] = array[i][leftColumn]; // Left column
                 }
                 leftColumn++;
             }
