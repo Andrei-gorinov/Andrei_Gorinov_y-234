@@ -1,44 +1,26 @@
 import java.util.Scanner;
 
-public class Main {
+public class NumberSeries {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        int[] memoryCells = new int[3];
-        int currentIndex = 0;
+        // Ввод двух чисел от пользователя
+        System.out.println("Введите два числа:");
+        int num1 = scanner.nextInt();
+        int num2 = scanner.nextInt();
 
-        while (true) {
-            System.out.println("Введите число (для выхода введите 0):");
-            int inputNumber = scanner.nextInt();
+        // Определение количества шагов и начального значения
+        int count = Math.max(num1, num2);
+        int start = Math.min(num1, num2);
+        int step = start;
 
-            if (inputNumber == 0) {
-                break;
-            }
-
-            if (currentIndex < memoryCells.length) {
-                memoryCells[currentIndex] = inputNumber;
-                currentIndex++;
-            } else {
-                int minIndex = findMinIndex(memoryCells);
-                if (inputNumber > memoryCells[minIndex]) {
-                    memoryCells[minIndex] = inputNumber;
-                }
-            }
+        // Печать последовательности чисел
+        for (int i = 0; i < count; i++) {
+            System.out.print(start * start + " ");
+            start += step;
         }
 
-        System.out.println("Результат:");
-        for (int value : memoryCells) {
-            System.out.print(value + " ");
-        }
-    }
-
-    public static int findMinIndex(int[] array) {
-        int minIndex = 0;
-        for (int i = 1; i < array.length; i++) {
-            if (array[i] < array[minIndex]) {
-                minIndex = i;
-            }
-        }
-        return minIndex;
+        // Закрытие сканера
+        scanner.close();
     }
 }
